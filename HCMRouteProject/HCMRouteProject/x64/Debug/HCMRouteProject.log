@@ -1,0 +1,6 @@
+﻿  MyForm.cpp
+E:\Study\Discrete Mathematics and Graph Theory\Project Test\HCMRouteProject\HCMRouteProject\Graph.h(27,15): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'MyForm.cpp')
+  
+  MyForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  HCMRouteProject.vcxproj -> E:\Study\Discrete Mathematics and Graph Theory\Project Test\HCMRouteProject\x64\Debug\HCMRouteProject.exe
