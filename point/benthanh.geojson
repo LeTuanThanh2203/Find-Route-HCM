@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "benthanh",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 7, "name": "Chợ Bến Thành" }, "geometry": { "type": "Point", "coordinates": [ 106.698041371848035, 10.772515710800809 ] } }
+]
+}

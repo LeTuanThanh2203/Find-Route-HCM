@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "ddl-hcr",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 33 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 106.696600513427981, 10.778340954542271 ], [ 106.698430552163614, 10.780243765246011 ], [ 106.698472143953083, 10.780342991240987 ], [ 106.698145351321685, 10.780623158579612 ], [ 106.696244012375558, 10.7823683617528 ] ] ] } }
+]
+}

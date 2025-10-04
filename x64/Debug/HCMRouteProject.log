@@ -1,0 +1,48 @@
+﻿  MyForm.cpp
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(409,23): warning C4566: character represented by universal-character-name '\u0110' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(409,23): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(469,21): warning C4566: character represented by universal-character-name '\u1ED1' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(469,21): warning C4566: character represented by universal-character-name '\u01B0' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(469,21): warning C4566: character represented by universal-character-name '\u1EE3' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(470,21): warning C4566: character represented by universal-character-name '\u1ED1' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(470,21): warning C4566: character represented by universal-character-name '\u01B0' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(470,21): warning C4566: character represented by universal-character-name '\u1EE3' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(470,21): warning C4566: character represented by universal-character-name '\u1EA1' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(508,25): warning C4566: character represented by universal-character-name '\u1EA5' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(508,25): warning C4566: character represented by universal-character-name '\u0111' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(508,25): warning C4566: character represented by universal-character-name '\u01B0' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(508,25): warning C4566: character represented by universal-character-name '\u1EDD' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(517,16): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
+  (compiling source file 'MyForm.cpp')
+  
+E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\HCMRouteProject\MyForm.h(455,19): warning C5307: 'int System::String::IndexOf(wchar_t,int)': argument (1) converted from 'char' to 'wchar_t'. Missing 'L' encoding-prefix for character literal?
+  (compiling source file 'MyForm.cpp')
+  
+  MyForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  HCMRouteProject.vcxproj -> E:\Study\Discrete Mathematics and Graph Theory\Project\HCMRouteProject\x64\Debug\HCMRouteProject.exe

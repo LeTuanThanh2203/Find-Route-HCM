@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "ddl-nhahat",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 13 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 106.696499690474738, 10.778188284105434 ], [ 106.697979169842199, 10.776796188807339 ], [ 106.701053991419172, 10.78020199547003 ], [ 106.703549498786003, 10.777943135714983 ] ] ] } }
+]
+}

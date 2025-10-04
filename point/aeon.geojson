@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "aeon",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ 
+    "type": "Feature", "properties": { "id": 12, "name": "Aeon Tân Phú" }, "geometry": { "type": "Point", "coordinates": [ 106.617293883478808, 10.801313962422915 ] }
+}
+]
+}

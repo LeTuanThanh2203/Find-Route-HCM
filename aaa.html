@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bản đồ TP.HCM</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map { height: 100vh; margin: 0; padding: 0; }
+    #loading-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: white;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="loading-overlay">Đang tải dữ liệu bản đồ TP.HCM...</div>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    let map;
+    let placeLayer = L.layerGroup();
+    async function initMap() {
+      try {
+        const [hcmRes, maskRes] = await Promise.all([
+          fetch('hcm_boundary.geojson'),
+          fetch('mask.geojson')
+        ]);
+
+        const hcmData = await hcmRes.json();
+        const maskData = await maskRes.json();
+
+        const tempLayer = L.geoJSON(hcmData);
+        const bounds = tempLayer.getBounds();
+
+        map = L.map('map', {
+          minZoom: 10,
+          maxZoom: 18,
+          zoomSnap: 1,
+          zoomDelta: 1,
+          maxBounds: bounds,
+          maxBoundsViscosity: 1.0
+        });
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        L.geoJSON(hcmData, {
+          style: {
+            color: 'red',
+            weight: 2,
+            fillOpacity: 0
+          }
+        }).addTo(map);
+
+        L.geoJSON(maskData, {
+          interactive: false,
+          style: {
+            fillColor: 'white',
+            fillOpacity: 0.95,
+            color: 'none',
+            weight: 0
+          }
+        }).addTo(map);
+
+        await loadAllPlaces();
+        map.addLayer(placeLayer);
+        setTimeout(sendAllNodesToApp, 500);
+
+        map.on('zoomend', function () {
+          const currentZoom = map.getZoom();
+          if (currentZoom >= 15) {
+            if (!map.hasLayer(placeLayer)) {
+              map.addLayer(placeLayer);
+            }
+          } else {
+            if (map.hasLayer(placeLayer)) {
+              map.removeLayer(placeLayer);
+            }
+          }
+        });
+        map.fitBounds(bounds);
+        document.getElementById('loading-overlay').style.display = 'none';
+      } catch (error) {
+        document.getElementById('loading-overlay').innerText = 'Lỗi khi tải dữ liệu bản đồ.';
+        console.error('Lỗi tải JSON:', error);
+      }
+    }
+    async function loadAllPlaces() {
+      try {
+        const indexRes = await fetch('https://local.map/point/allpoint.geojson');
+        const fileList = await indexRes.json();
+        console.log("Danh sách file:", fileList);
+        for (const file of fileList) {
+            const res = await fetch('https://local.map/point/' + file);
+          if (!res.ok) {
+            console.warn('Không tìm thấy file:', file);
+            continue;
+          }
+          let data;
+          try {
+            data = await res.json();
+          } catch (e) {
+            console.warn('File không phải JSON hợp lệ:', file);
+            continue;
+          }
+
+          const layer = L.geoJSON(data, {
+            pointToLayer: function (feature, latlng) {
+                    const marker = L.marker(latlng)
+                    .bindPopup(feature.properties.name || 'Địa điểm')
+                    .on('click', function () {
+                      if (window.chrome && window.chrome.webview) {
+                        window.chrome.webview.postMessage("nodeClick:" + feature.properties.id);
+                      }
+                });
+                 marker.feature = feature; 
+                return marker;
+              }
+        
+          });
+            console.log("Tổng số marker trong placeLayer:", placeLayer.getLayers().length);
+
+          placeLayer.addLayer(layer);
+        }
+      } catch (err) {
+        console.error('Lỗi tải danh sách địa điểm:', err);
+      }
+    }
+      window.showRoute = function(routeFile) {
+        fetch(routeFile)
+          .then(res => res.json())
+          .then(data => {
+            L.geoJSON(data, {
+              style: {
+                color: 'blue',
+                weight: 3
+              }
+            }).addTo(map);
+          })
+          .catch(err => {
+            console.error('Lỗi tải đường đi:', err);
+          });
+      };
+
+      window.drawPath = function (path) {
+        if (!window.routeLayer) {
+          window.routeLayer = L.layerGroup().addTo(map);
+        } else {
+          window.routeLayer.clearLayers();
+        }
+
+        const latlngs = path.map(p => [p.lat, p.lng]);
+        L.polyline(latlngs, {
+          color: 'blue',
+          weight: 5
+        })
+        .on('mouseover', function () {
+          this.setStyle({ color: 'red' });
+        })
+        .on('mouseout', function () {
+          this.setStyle({ color: 'blue' });
+        })
+        .addTo(window.routeLayer);
+      };
+
+      window.sendAllNodesToApp = function () {
+        const allNodes = [];
+
+        placeLayer.eachLayer(function (groupLayer) {
+          // Nếu layer là một FeatureGroup (nhóm marker)
+          if (groupLayer instanceof L.FeatureGroup || groupLayer instanceof L.LayerGroup) {
+            groupLayer.eachLayer(function (marker) {
+              const feature = marker.feature;
+              if (feature && feature.properties && feature.geometry) {
+                const coords = feature.geometry.coordinates;
+                if (Array.isArray(coords) && coords.length >= 2) {
+                  allNodes.push({
+                    id: feature.properties.id,
+                    name: feature.properties.name,
+                    lat: coords[1],
+                    lng: coords[0]
+                  });
+                }
+              }
+            });
+          }
+        });
+
+        console.log("Tổng số node gửi về:", allNodes.length);
+        console.log("Dữ liệu gửi:", JSON.stringify(allNodes));
+
+        if (window.chrome && window.chrome.webview) {
+          window.chrome.webview.postMessage("nodeList:" + JSON.stringify(allNodes));
+        }
+};
+
+    initMap();
+  </script>
+</body>
+</html>

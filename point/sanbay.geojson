@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "sanbay",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 1, "name": "Cảng hàng không quốc tế Tân Sơn Nhất" }, "geometry": { "type": "Point", "coordinates": [ 106.652444887245721, 10.81769049646998 ] } }
+]
+}

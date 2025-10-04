@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "ddl-tcv",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 28 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 106.696490592269996, 10.778116235305975 ], [ 106.696698551217253, 10.778413915297198 ], [ 106.705034734159241, 10.787215770962849 ] ] ] } }
+]
+}

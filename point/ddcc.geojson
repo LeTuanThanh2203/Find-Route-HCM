@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "ddcc",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 14, "name": "Địa Đạo Củ Chi" }, "geometry": { "type": "Point", "coordinates": [ 106.463909305682535, 11.143816169073308 ] } }
+]
+}
